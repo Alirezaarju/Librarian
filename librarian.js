@@ -25,7 +25,18 @@ console.log(addBook(newBook));
 
 /* Task 4 */
 function bookByAuthor(){
-
+    
+var byAuthor = library.slice(0);
+    byAuthor.sort(function(a,b) {
+        
+        var x = a.author.toLowerCase();
+        var y = b.author.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+        
+    });
+    console.log('Sorted by author:');
+    
+  return byAuthor;
 }
 
 console.log(bookByAuthor());
@@ -33,6 +44,18 @@ console.log(bookByAuthor());
 /* Task 5 */
 function findByTitle( title ){
   //add code
+    var pattern=new RegExp(""+title,"i");
+    var x=[];
+    for ( i in library)
+        {
+            var st=library[i].title;
+            if(st.search(pattern)!=-1)
+            {
+                x.push(library[i]);
+            }
+        }
+    //console.log(x);
+    return x;
 }
 
 console.log(findByTitle("man"));
